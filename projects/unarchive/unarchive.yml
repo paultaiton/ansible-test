@@ -1,0 +1,35 @@
+---
+- name: unarchive play
+  hosts: localhost
+  tasks:
+    - name: unarchive test from local files tar xz
+      unarchive:
+        remote_src: False
+        src: "paul.tar.xz"
+        dest: "/home/paul/unarchive-test"
+        list_files: true
+        timeout: 100
+
+    - name: unarchive test from local files tar gz
+      unarchive:
+        remote_src: False
+        src: "test.tar.gz"
+        dest: "/home/paul/unarchive-test"
+        list_files: true
+        timeout: 100
+
+    - name: unarchive test from remote path
+      unarchive:
+        remote_src: True
+        src: "/home/paul/test.tar.gz"
+        dest: "/home/paul/unarchive-test"
+        list_files: true
+        timeout: 100
+
+    - name: unarchive test from remote web URL
+      unarchive:
+        remote_src: True
+        src: "https://paul.aiton.info/test.tar.gz"
+        dest: "/home/paul/unarchive-test"
+        list_files: true
+        timeout: 100
